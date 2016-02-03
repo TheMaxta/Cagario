@@ -30,7 +30,7 @@
 	11) maybe something like (1) = player with health 1 and (50) = player with 50 health
 		-- would work better for a player model. would need to use pointers and strings...
 	12) break functions down a little.
-
+	13) different levels
 
 	*/
 
@@ -159,12 +159,14 @@ void setFood(int n)
 void setEnemy(void)
 {
 	// Set Enemy at random dimensions...
+   	time_t t;	// for random seed
+	srand((unsigned) time(&t));	// sets random seed to time
 
 	int x;
 	int y;
 
-	y = 0;	// rand num btwn 1 - 10
-	x = 0;
+	y = rand() % 16;	// rand num btwn 1 - 10
+	x = rand() % 16;
 
 	gameSpace[y][x] = 'e';
 
