@@ -77,7 +77,7 @@ int main (void)
 	void displaySpace(void);
 	void playerMove(void);
 	void enemyMove(void);
-
+	void setFood(int n);
 
 	welcome();
 
@@ -85,6 +85,7 @@ int main (void)
 	setEnemy();
 
 	displaySpace();
+
 
 
 	do {
@@ -133,28 +134,30 @@ void setPlayer(void)
 	gameSpace[4][4] = 'o';
 }
 
-/*
+
 void setFood(int n)
 {
 	
-	// Whatever number is passed to n will decide how many random
+	// Whatever number is passed to n will decide how many bits of food will be made
+	
+	time_t t;	// for random seed
+	srand((unsigned) time(&t));	// sets random seed to time
 
 	int i;
-	int x, y;
-
-
+	int x = 0, y = 0;
+	
+	
 	for (i = 0; i < n; i++)
 	{
 
-	// x = random (1 - 15);
-	// y = random (1 - 15);
+		x = rand() % 15;
+		y = rand() % 15;
 
 
-	// gameSpace[x][y] = ',';
+	gameSpace[x][y] = 'f';
 
 	}
 }
-*/
 
 void setEnemy(void)
 {
@@ -165,8 +168,8 @@ void setEnemy(void)
 	int x;
 	int y;
 
-	y = rand() % 16;	// rand num btwn 1 - 10
-	x = rand() % 16;
+	y = rand() % 15;	// rand num btwn 1 - 10
+	x = rand() % 15;
 
 	gameSpace[y][x] = 'e';
 
