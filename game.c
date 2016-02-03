@@ -29,7 +29,9 @@
 	10) random spawns for semicolons(food)
 	11) maybe something like (1) = player with health 1 and (50) = player with 50 health
 		-- would work better for a player model. would need to use pointers and strings...
+	12) break functions down a little.
 
+	
 	*/
 
 
