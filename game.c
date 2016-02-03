@@ -107,10 +107,13 @@ int main (void)
 
 void welcome(void)
 {
-
+	printf("\n========================\n");
 	printf("Welcome to Agario!!");
+	printf("\n=========================\n");
 	printf("When you are asked to make a move, enter: w, a, s, or d.\n");
 	printf("For moving: up(w), down(s), left(a), or right(d).\n");
+	printf("Food will generate at random as you play.\n");
+	printf("Your Goal: Eat as much stuff as possible!\n");
 	printf("Let's begin... \n\n");
 	printf("Setting Player and Generaing random Enemies.....\n\n\n");
 }
@@ -264,8 +267,12 @@ void playerMove(void)
 
 		// die
 		// game over
-		printf("You Lose!!!!!!!\n\n");
+		printf("\n\n\nYOU LOSE!!!!!!!\n\n\n");
+		exit(1);
 	}
+
+	newY = checkBoundryY(newY);	// need type def++ sep functions.
+	newX = checkBoundryX(newX);
 
 	gameSpace[newY][newX] = 'o'; // Set New position...
 
@@ -499,6 +506,52 @@ int checkForFood(int y, int x)
 	{
 		return (0);
 	}
+
+}
+
+// Function to check if player has gone out of bounds...
+int checkBoundries(int y, int x)	//passed values will be current y and x
+{
+	// if player is out of bounds, set player to opposite side of playSpace
+	if (y < 0)
+	{
+		y = 15;
+
+		return y;
+
+	}
+	else if (y < 15)
+	{
+		y = 0;
+
+		return y;
+
+	}
+	else
+		return y;
+
+	// Now check TargetX
+	if (x < 0)
+	{
+
+		x = 15;
+
+		return x;
+	
+	}
+	else if (x > 15)
+	{
+
+		x = 0;
+	
+		return x;
+
+	}
+	else
+		return x;
+
+
+
 
 }
 
