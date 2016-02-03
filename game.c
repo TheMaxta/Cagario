@@ -1,4 +1,8 @@
 // this is dumb.. but im gonna try to make an agario clone...
+// This is completely bare-bones C language. This is a pretty pointless project... but I felt
+// -- that i needed something a little more 'fun' to get used to C syntax.
+// I acknowledge that i would probably never build any actual games with c.
+
 // will write gameboard with periods ......... and a 0 for the player
 // o for small player.
 // O is health > 100.
@@ -7,6 +11,28 @@
 
 // Y = row
 // X = column
+
+
+
+/*	Next Steps:
+
+	1) players should be able to eat eachother
+	2) 2 player mode?
+	3) difficulty selects amnt of computer players
+	4) player can collect semicolons to increase health
+	5) if health > enemy eat enemy on collision
+	6) bigger game board.
+	7) once health hits a certain level, o becomes O
+	7) player can split into multiple o's once we reach big O
+	8) those little o's can still eat
+	9) random spawns for enemies
+	10) random spawns for semicolons(food)
+	11) maybe something like (1) = player with health 1 and (50) = player with 50 health
+		-- would work better for a player model. would need to use pointers and strings...
+
+	*/
+
+
 
 
 		/*			GLOBAL VARIABLES		*/
