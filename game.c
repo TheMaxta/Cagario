@@ -123,7 +123,7 @@ void playerMove(void)
 {
 
 
-	// Type Decs
+	// Type Dec
 	int findCurrentY(void);
 	int findCurrentX(void);
 
