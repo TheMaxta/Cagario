@@ -132,23 +132,23 @@ void displaySpace(void)
 void setPlayer(void)
 {
 	// Player always starts in middle...
-	gameSpace[4][4] = 'o';
+	gameSpace[6][6] = 'o';
 }
 
 
 void setFood(int n)
 {
-	
+
 	int randomY(void);
 	int randomX(void);
 
 
 	// Whatever number is passed to n will decide how many bits of food will be made
-	
+
 	int i;
 	int x = 0, y = 0;
-	
-	
+
+
 	for (i = 0; i < n; i++)
 	{
 		y = randomY();
@@ -199,6 +199,10 @@ void playerMove(void)
 	// Type Dec
 	int findCurrentY(void);
 	int findCurrentX(void);
+	int checkForFood(int y, int x);
+	int checkForEnemies(int y, int x);
+    int food, enemy;
+
 
 	// local variablse
 	int newY, newX;
@@ -240,7 +244,31 @@ void playerMove(void)
 		// move right
 	}
 
+
+
+
+	/*	Declare function here that checks newY and newX for enemies or food.	*/
+	/*	This should always handle collision events	*/
+	food = 	checkForFood(newY, newX);
+	enemy =	checkForEnemies(newY, newX);
+
+	if (food == 1)
+	{
+
+		// eat food
+		// increment health
+		printf("YUM!!!!\n");
+	}
+	if (enemy == 1)
+	{
+
+		// die
+		// game over
+		printf("You Lose!!!!!!!\n\n");
+	}
+
 	gameSpace[newY][newX] = 'o'; // Set New position...
+
 	gameSpace[returnY][returnX] = '.'; // Reset Prev position....
 
 
@@ -434,3 +462,45 @@ int randomX(void)
 
 	return (x);
 }
+
+
+
+
+
+int checkForEnemies(int y, int x)
+{
+
+	int food = 1;	// true flag
+
+	if (gameSpace[y][x] == 'e')
+	{
+		return (food);
+		// eat food.. inc health
+	}
+	else
+	{
+		// don't return anything/ do anything
+		return (0);
+	}
+
+}
+int checkForFood(int y, int x)
+{
+	int enemy = 1;
+
+	if (gameSpace[y][x] == 'f')
+	{
+
+		// die!!
+		// if health < e
+		return (enemy);
+	}
+	else
+	{
+		return (0);
+	}
+
+}
+
+
+
