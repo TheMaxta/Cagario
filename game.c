@@ -92,6 +92,7 @@ int main (void)
 	playerMove();
 	displaySpace();
 
+	setFood(1);
 
 	enemyMove();
 	displaySpace();
@@ -138,38 +139,50 @@ void setPlayer(void)
 void setFood(int n)
 {
 	
+	int randomY(void);
+	int randomX(void);
+
+
 	// Whatever number is passed to n will decide how many bits of food will be made
 	
-	time_t t;	// for random seed
-	srand((unsigned) time(&t));	// sets random seed to time
-
 	int i;
 	int x = 0, y = 0;
 	
 	
 	for (i = 0; i < n; i++)
 	{
+		y = randomY();
+		x = randomX();
 
-		x = rand() % 15;
-		y = rand() % 15;
-
-
-	gameSpace[x][y] = 'f';
-
+		// only set if space is not taken.
+		if (gameSpace[y][x] == 'o' || gameSpace[y][x] == 'e')
+		{
+			//don't set
+		}
+		else
+		{
+			gameSpace[y][x] = 'f';
+		}
 	}
 }
 
 void setEnemy(void)
 {
 	// Set Enemy at random dimensions...
-   	time_t t;	// for random seed
-	srand((unsigned) time(&t));	// sets random seed to time
 
+	// type decs
+	int randomY(void);
+	int randomX(void);
+	// vars
 	int x;
 	int y;
+	//
 
-	y = rand() % 15;	// rand num btwn 1 - 10
-	x = rand() % 15;
+
+
+
+	y = randomY();
+	x = randomX();
 
 	gameSpace[y][x] = 'e';
 
@@ -400,4 +413,24 @@ int findEnemyX(void)
 
 	return (resultX);		// returns the dimensions it found
 
+}
+int randomY(void)
+{
+	time_t t;	// for random seed
+	srand((unsigned) time(&t));	// sets random seed to time
+	int y;
+
+	y = rand() % 15;
+
+	return (y);
+}
+int randomX(void)
+{
+	time_t t;	// for random seed
+	srand((unsigned) time(&t));	// sets random seed to time
+	int x;
+
+	x= rand() % 15;
+
+	return (x);
 }
