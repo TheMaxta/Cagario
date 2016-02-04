@@ -16,7 +16,7 @@
 
 /*	Next Steps:
 
-	1) players should be able to eat eachother
+	1) players should be able to eat eachother 
 	2) 2 player mode?
 	3) difficulty selects amnt of computer players
 	4) player can collect semicolons to increase health
@@ -25,8 +25,8 @@
 	7) once health hits a certain level, o becomes O
 	7) player can split into multiple o's once we reach big O
 	8) those little o's can still eat
-	9) random spawns for enemies
-	10) random spawns for semicolons(food)
+	9) random spawns for enemies (DONE)
+	10) random spawns for semicolons(food) (DONE)
 	11) maybe something like (1) = player with health 1 and (50) = player with 50 health
 		-- would work better for a player model. would need to use pointers and strings...
 	12) break functions down a little.
@@ -68,10 +68,12 @@ int main (void)
 {
 
 
-	int ctr = 1;
+	int ctr = 0;
+	int numRounds;
 
 	// type declarations
 	void welcome(void);
+	int setRounds(void);
 	void setPlayer(void);
 	void setEnemy(void);
 	void displaySpace(void);
@@ -80,6 +82,7 @@ int main (void)
 	void setFood(int n);
 
 	welcome();
+	numRounds = setRounds();
 
 	setPlayer();
 	setEnemy();
@@ -98,7 +101,7 @@ int main (void)
 	displaySpace();
 	ctr++;
 
-	} while (ctr != 10);	// ctr is amnt of rounds...
+	} while (ctr != numRounds);	// ctr is amnt of rounds...
 
 
 
@@ -116,6 +119,17 @@ void welcome(void)
 	printf("Your Goal: Eat as much stuff as possible!\n");
 	printf("Let's begin... \n\n");
 	printf("Setting Player and Generaing random Enemies.....\n\n\n");
+}
+
+int setRounds(void)
+{
+	int rounds;
+
+	printf("Please Chose how many rounds you would like to play  :   ");
+	scanf("%i", &rounds)
+
+	return (rounds);
+
 }
 
 void displaySpace(void)
@@ -204,6 +218,8 @@ void playerMove(void)
 	int findCurrentX(void);
 	int checkForFood(int y, int x);
 	int checkForEnemies(int y, int x);
+	int checkBoundryY(int y);
+	int checkBoundryX(int x);
     int food, enemy;
 
 
@@ -271,7 +287,7 @@ void playerMove(void)
 		exit(1);
 	}
 
-	newY = checkBoundryY(newY);	// need type def++ sep functions.
+	//newY = checkBoundryY(newY);	// doesn't work for some reason
 	newX = checkBoundryX(newX);
 
 	gameSpace[newY][newX] = 'o'; // Set New position...
@@ -509,18 +525,19 @@ int checkForFood(int y, int x)
 
 }
 
-// Function to check if player has gone out of bounds...
-int checkBoundries(int y, int x)	//passed values will be current y and x
+
+/*
+int checkBoundryY(int y)	//passed values will be current y and x
 {
 	// if player is out of bounds, set player to opposite side of playSpace
 	if (y < 0)
 	{
-		y = 15;
+		y = 14;
 
 		return y;
 
 	}
-	else if (y < 15)
+	else if (y < 14)
 	{
 		y = 0;
 
@@ -530,16 +547,22 @@ int checkBoundries(int y, int x)	//passed values will be current y and x
 	else
 		return y;
 
+}
+// DOESN'T WORK
+*/
+
 	// Now check TargetX
+int checkBoundryX(int x)
+{	
 	if (x < 0)
 	{
 
-		x = 15;
+		x = 14;
 
 		return x;
 	
 	}
-	else if (x > 15)
+	else if (x > 14)
 	{
 
 		x = 0;
@@ -549,8 +572,6 @@ int checkBoundries(int y, int x)	//passed values will be current y and x
 	}
 	else
 		return x;
-
-
 
 
 }
