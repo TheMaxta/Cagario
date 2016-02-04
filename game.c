@@ -68,11 +68,42 @@ int main (void)
 {
 
 
+	// type declarations
+	void welcome(void);
+	void customGame(void);
+
+
+	welcome();
+	
+	customGame();
+
+
+	return (0);
+}
+
+void welcome(void)
+{
+	printf("\n========================\n");
+	printf("Welcome to Agario!!");
+	printf("\n=========================\n");
+	printf("When you are asked to make a move, enter: w, a, s, or d.\n");
+	printf("For moving: up(w), down(s), left(a), or right(d).\n");
+	printf("Food will generate at random as you play.\n");
+	printf("Your Goal: Eat as much stuff as possible!\n");
+	printf("Let's begin... \n\n");
+	printf("Setting Player and Generaing random Enemies.....\n\n\n");
+}
+
+
+void customGame(void)
+{
+
+	// Vars
 	int ctr = 0;
 	int numRounds, foodGen;
 
-	// type declarations
-	void welcome(void);
+
+	// Prototype Declarations
 	int setRounds(void);
 	int setFoodGen(void);
 	void setPlayer(void);
@@ -82,7 +113,11 @@ int main (void)
 	void enemyMove(void);
 	void setFood(int n);
 
-	welcome();
+
+
+
+
+
 	numRounds = setRounds();
 	foodGen = setFoodGen();
 
@@ -108,21 +143,33 @@ int main (void)
 
 
 
-	return (0);
+
 }
 
-void welcome(void)
+void easyGame(void)
 {
-	printf("\n========================\n");
-	printf("Welcome to Agario!!");
-	printf("\n=========================\n");
-	printf("When you are asked to make a move, enter: w, a, s, or d.\n");
-	printf("For moving: up(w), down(s), left(a), or right(d).\n");
-	printf("Food will generate at random as you play.\n");
-	printf("Your Goal: Eat as much stuff as possible!\n");
-	printf("Let's begin... \n\n");
-	printf("Setting Player and Generaing random Enemies.....\n\n\n");
+
+
+
 }
+
+void hardGame(void)
+{
+
+
+
+
+}
+
+void insaneGame(void)
+{
+
+
+
+
+}
+
+
 
 int setRounds(void)
 {
