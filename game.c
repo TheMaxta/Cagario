@@ -16,7 +16,7 @@
 
 /*	Next Steps:
 
-	1) players should be able to eat eachother 
+	1) players should be able to eat eachother
 	2) 2 player mode?
 	3) difficulty selects amnt of computer players
 	4) player can collect semicolons to increase health
@@ -69,11 +69,12 @@ int main (void)
 
 
 	int ctr = 0;
-	int numRounds;
+	int numRounds, foodGen;
 
 	// type declarations
 	void welcome(void);
 	int setRounds(void);
+	int setFoodGen(void);
 	void setPlayer(void);
 	void setEnemy(void);
 	void displaySpace(void);
@@ -83,6 +84,7 @@ int main (void)
 
 	welcome();
 	numRounds = setRounds();
+	foodGen = setFoodGen();
 
 	setPlayer();
 	setEnemy();
@@ -92,10 +94,11 @@ int main (void)
 
 
 	do {
+
 	playerMove();
 	displaySpace();
 
-	setFood(1);
+	setFood(foodGen);
 
 	enemyMove();
 	displaySpace();
@@ -126,9 +129,20 @@ int setRounds(void)
 	int rounds;
 
 	printf("Please Chose how many rounds you would like to play  :   ");
-	scanf("%i", &rounds)
+	scanf("%i", &rounds);
 
 	return (rounds);
+
+}
+
+int setFoodGen(void)
+{
+	int numF;
+
+	printf("Who much food should spawn per round?   :   ");
+	scanf("%i", &numF);
+
+	return numF;
 
 }
 
@@ -163,7 +177,7 @@ void setFood(int n)
 	// Whatever number is passed to n will decide how many bits of food will be made
 
 	int i;
-	int x = 0, y = 0;
+	int x, y;
 
 
 	for (i = 0; i < n; i++)
@@ -228,8 +242,10 @@ void playerMove(void)
 	int returnY, returnX;
     char move;
 
-	printf("\nMake a move!   :   ");
+	printf("\n============================================================\n");
+	printf("Make a move!   :   ");
 	scanf(" %c", &move);
+	printf("============================================================\n");
 
 	// wont actually work.... need seperate funcions maybe
 
@@ -283,7 +299,10 @@ void playerMove(void)
 
 		// die
 		// game over
+		printf("\n||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
 		printf("\n\n\nYOU LOSE!!!!!!!\n\n\n");
+		printf("||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||\n");
+
 		exit(1);
 	}
 
@@ -301,7 +320,9 @@ void playerMove(void)
 
 void enemyMove(void)
 {
+	printf("\n============================================================\n");
 	printf("Computer Player's Move!");
+	printf("\n============================================================\n");
 	// Type Decs
 	int findCurrentY(void);
 	int findCurrentX(void);
@@ -373,8 +394,6 @@ void enemyMove(void)
 	//set new position on board
 	gameSpace[enemyY][enemyX] = 'e';	// set new pos for enemy
 	gameSpace[tempY][tempX] = '.'; 		// reset old pos
-
-
 
 }
 
@@ -553,20 +572,20 @@ int checkBoundryY(int y)	//passed values will be current y and x
 
 	// Now check TargetX
 int checkBoundryX(int x)
-{	
+{
 	if (x < 0)
 	{
 
 		x = 14;
 
 		return x;
-	
+
 	}
 	else if (x > 14)
 	{
 
 		x = 0;
-	
+
 		return x;
 
 	}
