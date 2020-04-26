@@ -611,7 +611,6 @@ int checkBoundryY(int y)	//passed values will be current y and x
 		return y;
 
 }
-// DOESN'T WORK
 */
 
 	// Now check TargetX
