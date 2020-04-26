@@ -1,7 +1,4 @@
-// this is dumb.. but im gonna try to make an agario clone...
-// This is completely bare-bones C language. This is a pretty pointless project... but I felt
-// -- that i needed something a little more 'fun' to get used to C syntax.
-// I acknowledge that i would probably never build any actual games with c.
+// This is completely bare-bones C language. 
 
 // will write gameboard with periods ......... and a 0 for the player
 // o for small player.
